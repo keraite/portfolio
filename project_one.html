@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beatričė Keraitė || Programėlės UI/UX dizainas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.6/lottie.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Recursive:slnt,wght,CASL,CRSV,MONO@-15..0,300..1000,0..1,0,0..1&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Tilt+Warp:XROT,YROT@-45..45,-45..45&display=swap');
+
+        :root {
+            --yellow: #F9F4AF;
+            --blue: #C4E5FF;
+            --green: #E3F29A;
+            --black: #131313;
+            --inner-padding: 30px 70px 30px 30px;
+            --section-spacing: 0px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Recursive', sans-serif;
+            font-variation-settings: "wght" 400, "slnt" 0, "CASL" 0, "MONO" 0;
+            color: var(--black);
+            line-height: 1.5;
+            background-color: #fff;
+        }
+
+        /* Grid Layout */
+        .grid-container {
+            display: grid;
+            grid-template-columns: 6fr 1fr;
+            grid-template-rows: auto;
+            width: 100%;
+            max-width: 1600px;;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .side-area {
+            grid-column: 2 / 3;
+            grid-row: 1 / 7;
+            background-color: var(--green);
+        }
+        
+        .header-area {
+            grid-column: 1 / 2;
+            grid-row: 1 / 2;
+            background-color: var(--yellow);
+            padding: 10px 70px 10px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 100px;
+        }
+
+        .title-area {
+            grid-column: 1 / 2;
+            grid-row: 2 / 3;
+            padding: 30px 30px 30px 30px;
+            margin-bottom: var(--section-spacing);
+        }
+
+        .explanation-area {
+            grid-column: 1 / 2;
+            grid-row: 3 / 4;
+            padding: 30px 70px 0px 30px;
+            margin-bottom: 0;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        .design-area {
+            grid-column: 1 / 2;
+            grid-row: 4 / 5;
+            padding: 0px 70px 0px 30px;
+            margin-bottom: var(--section-spacing);
+            display: grid;
+            grid-template-columns: 1fr 1fr 2fr;
+            gap: 40px;
+        }
+
+        .project-area {
+            grid-column: 1 / 2;
+            grid-row: 5 / 6;
+            padding: var(--inner-padding);
+            margin-bottom: var(--section-spacing);
+        }
+
+        .footer-area {
+            grid-column: 1 / 2;
+            grid-row: 6 / 7;
+            padding: var(--inner-padding);
+            text-align: center;
+        }
+
+        /* Element styling */
+        .logo {
+            font-size: 2.5rem;
+            font-family: "Tilt Warp", sans-serif;
+            font-variation-settings: "XROT" 0, "YROT" 0;
+            color: #fff;
+        }
+
+        nav {
+            text-align: right;
+        }
+
+        /* Typography */
+        .nav-text {
+            margin-right: 30px;
+            font-size: 1.5rem;
+            text-decoration: none;
+            font-family: "Tilt Warp", sans-serif;
+            font-variation-settings: "XROT" 0, "YROT" 0;
+            color: var(--black);
+        }
+
+        .main-title {
+            font-size: 4rem;
+            font-family: "Tilt Warp", sans-serif;
+            font-variation-settings: "XROT" 0, "YROT" 0;
+            margin-bottom: 30px;
+            line-height: 1.1;
+            text-shadow: var(--blue) 6px 6px 0px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-family: "Tilt Warp", sans-serif;
+            font-variation-settings: "XROT" 0, "YROT" 0;
+            font-size: 3rem;
+            font-variation-settings: "wght" 700;
+            margin-bottom: 30px;
+            color: var(--blue);
+        }
+
+        .intro-text {
+            margin-bottom: 50px;
+            font-size: 1rem;
+        }
+
+        /* Experience cards */
+        .explanation-card {
+            padding: 20px;
+            margin-bottom: 90px;
+            background-color: var(--blue);
+            box-shadow: var(--yellow) 6px 6px;
+        }
+
+        .explanation-title {
+            font-size: 2rem;
+            font-variation-settings: "wght" 700;
+            margin-bottom: 10px;
+        }
+
+        .explanation-text {
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .design-card {
+            padding: 20px;
+            margin-bottom: 90px;
+            background-color: var(--blue);
+            box-shadow: var(--yellow) 6px 6px;
+        }
+
+        .design-title {
+            font-size: 2rem;
+            font-variation-settings: "wght" 700;
+            margin-bottom: 10px;
+        }
+
+        .design-text {
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .project-card {
+            padding: 20px;
+            margin-bottom: 90px;
+            background-color: var(--yellow);
+            box-shadow: var(--blue) 6px 6px;
+        }
+
+        .project-title {
+            font-size: 2rem;
+            font-variation-settings: "wght" 700;
+            margin-bottom: 10px;
+        }
+
+        .project-text {
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .project-img {
+            width: 90%;
+            height: 90%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .image {
+            padding: 10px;
+            margin-bottom: 90px;
+            display: flex; 
+            flex-direction: column;
+            align-items: center; 
+            justify-content: center;
+            background-color: var(--green);
+            box-shadow: var(--blue) 6px 6px;
+            text-align: center;
+            font-variation-settings: "wght" 600;
+        }
+
+        /* Animations */
+        @keyframes text-breathe {
+            0% {
+                letter-spacing: 0;
+                font-variation-settings: "wght" 700;
+            }
+            50% {
+                letter-spacing: 5px;
+                font-variation-settings: "wght" 900;
+            }
+            100% {
+                letter-spacing: 0;
+                font-variation-settings: "wght" 700;
+            }
+        }
+
+        .explanation-title, .design-title, .project-title  {
+            animation: text-breathe 10s ease-in-out infinite;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="grid-container">
+
+        <div class="side-area"></div>
+
+        <div class="header-area">
+            <div class="logo">BK</div>
+            <nav>
+                <a href="index.html#apie-mane" class="nav-text">Apie mane</a>
+                <a href="index.html#projektai" class="nav-text">Projektai</a>
+            </nav>
+        </div>
+
+        <div class="title-area">
+            <h1 class="main-title">Programėlės UI/UX dizainas</h1>
+            <p class="intro-text">
+                Šis projektas buvo sukurtas kaip žmogaus ir kompiuterio sąveikos studijų dalyko užduotis. Buvo sukurta programėlė, kurios tikslas – padėti vartotojams fiksuoti, stebėti ir analizuoti kasdienius skausmus, ypač žmonėms, gyvenantiems su lėtiniais skausmais, ir tiems, kurie nori turėti aiškią skausmo istoriją konsultacijoms su gydytojais. Pagrindinis projekto tikslas – sukurti patogią, intuityvią mobiliąją programėlę, kuria būtų lengva naudotis ir ji galėtų padėtų vartotojams stebėti vieną iš jų sveikatos sričių. Siekiant įgyvendinti projekto tikslus, buvo naudojami įrankiai, tokie kaip LucidChart (diagramų kūrimui) ir Figma (dizainui ir prototipų kūrimui).        
+            </p>
+            </div>
+
+        <div class="explanation-area">
+            <div class="explanation-card">
+                <h3 class="explanation-title">Projekto tiriamoji dalis</h3>
+                <p class="explanation-text"> 
+                    Atliekant projekto tiriamąją dalį, buvo išanalizuoti galimi programėlės vartotojų tipai, jų poreikiai, naudojimo kontekstai ir įpročiai. Taip pat atlikta konkurentų analizė, kurioje vertintos panašios rinkoje esančios programėlės. Analizė atskleidė, kad dauguma esamų sprendimų yra anglų kalba ir nėra prieinami nemokamai.
+                </p>
+            </div>
+            <div class="image">
+                <img class="project-img" src="Images/auc_1.png">
+                <p>Personos analizė</p>
+            </div>
+            <div class="image">
+                <img class="project-img" src="Images/auc_2.png">
+                <p>Naudotojo kelionės žemėlapis</p>
+            </div>
+        </div>
+
+        <div class="design-area">
+            <div class="image">
+                <img class="project-img" src="Images/auc_3.png">
+                <p>Site Map diagrama</p>
+            </div>
+            <div class="image">
+                <img class="project-img" src="Images/auc_4.png">
+                <p>User Flow diagrama</p>
+            </div>
+            <div class="design-card">
+                <h3 class="design-title">Projekto dizaino dalis</h3>
+                <p class="design-text"> 
+                    Projekto dizaino dalyje buvo sukurti keli naudotojo kelionės žemėlapiai (User Journey) remiantis suadrytomis personomis iš galimų vartotojų interviu, aprašantys skirtingų naudotojų sąveiką su programėle. Taip pat buvo sudarytos User Flow ir Site Map diagramos, kurios padėjo išsiaiškinti galimus veiksmus programėleje. Tuomet buvo kuriami vieliniai karkasai (wireframes), apimantys pagrindinius ekranus: prisijungimo, pagrindinį, skausmo registravimo, kalendoriaus ir statistikos. Pagal vielinį karkasą buvo sudėtas galutinis dizainas, kuriame akcentuotas aiškumas ir minimalizmas. Taip pat sukurtas interaktyvus prototipas, kuris leidžia ištestuoti naudotojo sąveiką.
+                </p>
+            </div>
+        </div>
+
+        <div class="project-area">
+            <div class="project-card">
+                <h3 class="project-title">Galutinis rezultatas</h3>
+                <p class="project-text"> 
+                    Projekto pabaigoje parengtas veikiantis programėlės prototipas, kuriame vartotojai gali užregistruoti skausmo epizodą, pasirinkti vietą, intensyvumą, trukmę bei pridėti komentarų. Prototipas yra lietuvių kalba ir paruoštas tolesniam tobulinimui ar testavimui su realiais naudotojais. Projektas padėjo pritaikyti naudotojo patirties (UX) principus kuriant prasmingą ir reikalingą skaitmeninį sprendimą. 
+                </p>
+            </div>
+            <h2 class="section-title">Figma projektas</h2>
+            <iframe style="border: 1px solid var(--blue);" width="100%" height="600" src="https://embed.figma.com/design/qjdnuWxYyGwpCcyXMiuvNG/App-design-project?embed-host=share" allowfullscreen></iframe>
+        </div>
+
+        </div>
+
+        <div class="footer-area">
+            <p>Beatričė Keraitė || 2025 metai</p>
+        </div>
+        
+    </div>
+
+    <script>
+        // Interaktyvaus teksto animacija
+        const interactiveTexts = document.querySelectorAll('.main-title');
+        const interactiveSections = document.querySelectorAll('.title-area');
+        
+        function handleMouseMove(event) {
+            interactiveTexts.forEach(text => {
+                const container = text.closest('.title-area');
+                const containerRect = container.getBoundingClientRect();
+                
+                // Kursoriaus pozicija konteineryje
+                const relativeX = event.clientX - containerRect.left;
+                const relativeY = event.clientY - containerRect.top;
+                
+                // Pozicija į procentus
+                const percentX = Math.max(0, Math.min(1, relativeX / containerRect.width));
+                const percentY = Math.max(0, Math.min(1, relativeY / containerRect.height));
+                
+                // Procentai į kintamojo šrifto ašis
+                const xRotation = percentX * 45;
+                const yRotation = percentY * 45;
+                
+                text.style.fontVariationSettings = `"XROT" ${xRotation}, "YROT" ${yRotation}`;
+            });
+        }
+
+        interactiveSections.forEach(section => {
+            section.addEventListener('mousemove', handleMouseMove);
+        });
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.from(".explanation-card, .design-card, .image, .project-card", {
+            scrollTrigger: {
+                trigger: ".explanation-card, .design-card, .image, .project-card",
+                start: "top 70%",
+            },
+            y: 200,
+            opacity: 0,
+            duration: 1.2,
+            stagger: 0.2,
+            ease: "power3.out"
+        });
+
+        gsap.from(".project-img", {
+            scrollTrigger: {
+                trigger: ".project-img",
+                start: "top 70%",
+            },
+            opacity: 100,
+            duration: 1.2,
+            stagger: 0.3,
+            ease: "power3.out"
+        });
+
+
+    </script>
+
+</body>
+</html>
