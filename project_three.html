@@ -54,6 +54,8 @@
             grid-column: 2 / 3;
             grid-row: 1 / 7;
             background-color: var(--green);
+            position: relative;
+            overflow: hidden;
         }
         
         .header-area {
@@ -226,12 +228,28 @@
             animation: text-breathe 10s ease-in-out infinite;
         }
 
+        /* Lottie Animation */
+        .lottie-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .lottie-container svg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
     </style>
 </head>
 <body>
     <div class="grid-container">
 
-        <div class="side-area"></div>
+        <div class="side-area">
+            <div id="lottie-animation-1" class="lottie-container"></div>
+        </div>
 
         <div class="header-area">
             <div class="logo">BK</div>
@@ -283,6 +301,15 @@
     </div>
 
     <script>
+        // Lottie animacija
+        var animation = lottie.loadAnimation({
+                container: document.getElementById('lottie-animation-1'),
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: 'vingiuota.json'
+            });
+
         // Interaktyvaus teksto animacija
         const interactiveTexts = document.querySelectorAll('.main-title');
         const interactiveSections = document.querySelectorAll('.title-area');
