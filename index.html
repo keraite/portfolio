@@ -54,6 +54,8 @@
             grid-column: 2 / 3;
             grid-row: 1 / 8;
             background-color: var(--green);
+            position: relative;
+            overflow: hidden;
         }
         
         .header-area {
@@ -330,6 +332,18 @@
             animation-play-state: paused;
         }
 
+        /* Lottie Animation */
+        #lottie-container {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+
     </style>
 </head>
 <body>
@@ -434,10 +448,24 @@
             <p>Beatričė Keraitė || 2025 metai</p>
         </div>
         
-        <div class="side-area"></div>
+        <div class="side-area">
+            <div id="lottie-container"></div>
+        </div>
     </div>
 
     <script>
+        // Lottie animacija
+        const animationUrl = 'vingiuota.json';
+        
+        const animation = lottie.loadAnimation({
+            container: document.getElementById('lottie-container'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: animationUrl,
+        });
+
+
         // Interaktyvaus teksto animacija
         const interactiveTexts = document.querySelectorAll('.main-title');
         const interactiveSections = document.querySelectorAll('.title-area');
