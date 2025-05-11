@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Svetainės dizaino kūrimas || Beatričė Keraitė</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="Favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="Favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="Favicon/favicon-16x16.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.6/lottie.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Recursive:slnt,wght,CASL,CRSV,MONO@-15..0,300..1000,0..1,0,0..1&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Tilt+Warp:XROT,YROT@-45..45,-45..45&display=swap');
+
+        :root {
+            --black: #0F0F0F;
+            --green: #9EBE00;
+        }
+
+        body {
+            background-color: var(--black);
+            font-family: 'Recursive', sans-serif;
+            font-variation-settings: "wght" 400, "slnt" 0, "CASL" 0, "MONO" 0;
+            line-height: 1.5;
+            color: white;
+        }
+
+        .navbar-logo {
+            font-family: "Tilt Warp", sans-serif;
+            font-variation-settings: "XROT" 0, "YROT" 0;
+            font-size: 2rem;
+            text-decoration: none;
+            color: white !important;
+        }
+
+        .nav-link {
+            font-size: 1.5rem;
+            color: white !important;
+        }
+
+        .title-row, .three-collums, .figma {
+            margin-bottom: 120px;
+        }
+
+        .project-title {
+            font-size: 4rem;
+            font-family: "Tilt Warp", sans-serif;
+            font-variation-settings: "XROT" 0, "YROT" 0;
+            overflow: hidden;
+        }
+
+        .project-title .line {
+            display: block;
+            overflow: hidden;
+            transform: translateY(100%);
+            opacity: 0;
+            margin-bottom: 0;
+            transition: color 0.3s ease;
+        }
+
+        .project-title:hover .line {
+            color: var(--green);
+            cursor: pointer;
+        }
+
+        .title-row {
+            display: flex;
+            align-items: center;
+            margin: 200px 0 120px 0;
+        }
+
+        .section-header {
+            font-size: 2rem;
+            font-variation-settings: "wght" 700;
+            margin-bottom: 20px;
+
+            overflow: hidden;
+            background: linear-gradient(
+                to right,
+                white 50%,
+                var(--black) 50%
+            );
+            background-size: 400% 100%;
+            background-position: right;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+
+            animation: wipe-color 2s ease-in forwards;
+        }
+
+        @keyframes wipe-color {
+            0% { background-position: right; }
+            100% { background-position: left; }
+        }
+
+        .three-collums {
+            padding: 40px 0 0 10px;
+        }
+
+        .three-collums:hover {
+            border: solid 2px white;
+            box-shadow: white 6px 6px 0;
+            font-variation-settings: "slnt" -15;
+            cursor: pointer;
+        }
+
+        .three-collums:hover .section-header {
+            font-variation-settings: "slnt" -15;
+        }
+
+        .figma {
+            height: 500px;
+            max-height: 500px;
+        }
+
+        .figma-iframe {
+            transform: none;
+            opacity: 0;
+        }
+
+        .marquee {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .marquee-inner {
+            display: flex;
+            width: max-content;
+            animation: marquee-line 10s linear infinite;
+        }
+
+        @keyframes marquee-line {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .marquee:hover .marquee-inner {
+            animation-play-state: paused;
+        }
+
+        .contact-link {
+            font-size: 2rem;
+            font-variation-settings: "slnt" -15;
+            text-decoration: none;
+            text-shadow: none;
+            color: white;
+            border: solid 2px ;
+            border-color: white;
+            padding: 5px 10px 5px 10px;
+            margin-right: 40px;
+            margin-bottom: 120px;
+        }
+
+        .contact-link:hover {
+            box-shadow: white 6px 6px;
+            font-variation-settings: "slnt" 0;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-logo" href="index.html">BK</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#apie-mane">Apie mane</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#projektai">Projektai</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="title-row">
+            <div class="col-md-6">
+                <h1 class="project-title" id="project-title">
+                    <span class="line">Svetainės</span>
+                    <span class="line">dizaino</span>
+                    <span class="line">kūrimas</span>
+                </h1>
+            </div>
+            <div class="col-md-6" id="project-description">
+                <p>
+                    Šis projektas (internetinės vinilinių plokštelių parduotuvės dizainas) buvo kuriamas siekiant sukurti estetišką, vartotojui patogią ir funkcionalią e. komercijos svetainę, kurios pagrindinis dėmesys buvo skirtas švariai vizualinei struktūrai, aiškiam informacijos pateikimui ir sklandžiam naršymui. Tikslas buvo sukurti modernų ir minimalistinį svetainės dizainą, atitinkantį muzikos entuziastų poreikius ir skatinantį patogų produktų naršymą bei pirkimą. Šiam tikslui pasiekti buvo naudojama Figma programa, leidžianti gan greitai ir lengvai maketuoti puslapius, kurti interaktyvius prototipus ir testuoti naudotojo sąsają.
+                </p>
+            </div>
+        </section>
+
+        <section class="row three-collums">
+            <div class="col-md-4">
+                <h2 class="section-header">Projekto tiriamoji dalis</h2>
+                <p class="description">
+                    Prieš kuriant dizainą buvo atlikta panašių svetainių analizė – nagrinėtos esamos vinilinių plokštelių ir ne tik parduotuvės, vertintas jų dizainas, vartotojo patirtis ir funkcionalumas. Analizė padėjo nustatyti, kokie sprendimai veikia efektyviau ir kaip galima išsiskirti konkurencingoje rinkoje.
+                </p>
+            </div>
+            <div class="col-md-4">
+                <h2 class="section-header">Projekto dizaino dalis</h2>
+                <p class="description">
+                    Dizainas paremtas monochromatine spalvų palete – dominuoja neutralios, žalių atspalvių spalvos. Pasirinktas sans serif šriftas, kuris užtikrina įskaitomumą ir modernią išvaizdą. Kiekvienas puslapis (pagrindinis, produktų, produktų kortelės, naudotojo paskyra, pirkinių krepšelis) kurtas remiantis vientisa kompozicija ir aiškia struktūra. Numatyta filtravimo sistema, kuri padėtų parduotuvės lankytojams rasti ieškomą prekę. Visi UI dizaino sprendimai priimti siekiant labiau atskleisti parduodamus produktus ir neblaškyti naudotojų dėmesio.
+                </p>
+            </div>
+            <div class="col-md-4">
+                <h2 class="section-header">Galutinis rezultatas</h2>
+                <p class="description">
+                    Projekto galutinis produktas - interaktyvus svetainės prototipas su visais pagrindiniais puslapiais ir funkciniais elementais. Dizainas išlaiko vizualinį vientisumą, yra pritaikytas patogiam naudojimui ir atitinka šiuolaikinius vartotojo sąsajos dizaino principus.
+                </p>
+            </div>
+        </section>
+
+        <!-- Image Section -->
+        <section>
+            <div class="col-md-12 figma">
+                <iframe class="figma-iframe" style="border: 2px solid white;" width="100%" height="100%" src="https://embed.figma.com/design/Nu49wmlQytMYddgVJyaX1D/Website-design-project?node-id=19-3404&embed-host=share" allowfullscreen></iframe>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="contact-section">
+                <div class="marquee">
+                    <div class="marquee-inner">
+                        <a href="mailto:beatrice1316@gmail.com" class="contact-link">Gmail</a>
+                        <a href="https://www.linkedin.com/in/beatrice-keraite/" class="contact-link">LinkedIn</a>
+                        <a href="mailto:beatrice1316@gmail.com" class="contact-link">Gmail</a>
+                        <a href="https://www.linkedin.com/in/beatrice-keraite/" class="contact-link">LinkedIn</a>
+                        <a href="mailto:beatrice1316@gmail.com" class="contact-link">Gmail</a>
+                        <a href="https://www.linkedin.com/in/beatrice-keraite/" class="contact-link">LinkedIn</a>
+                        <a href="mailto:beatrice1316@gmail.com" class="contact-link">Gmail</a>
+                        <a href="https://www.linkedin.com/in/beatrice-keraite/" class="contact-link">LinkedIn</a>
+                        <a href="mailto:beatrice1316@gmail.com" class="contact-link">Gmail</a>
+                        <a href="https://www.linkedin.com/in/beatrice-keraite/" class="contact-link">LinkedIn</a>
+                        <a href="mailto:beatrice1316@gmail.com" class="contact-link">Gmail</a>
+                        <a href="https://www.linkedin.com/in/beatrice-keraite/" class="contact-link">LinkedIn</a>
+                        <a href="mailto:beatrice1316@gmail.com" class="contact-link">Gmail</a>
+                        <a href="https://www.linkedin.com/in/beatrice-keraite/" class="contact-link">LinkedIn</a>
+                        <a href="mailto:beatrice1316@gmail.com" class="contact-link">Gmail</a>
+                        <a href="https://www.linkedin.com/in/beatrice-keraite/" class="contact-link">LinkedIn</a>
+                        <a href="mailto:beatrice1316@gmail.com" class="contact-link">Gmail</a>
+                        <a href="https://www.linkedin.com/in/beatrice-keraite/" class="contact-link">LinkedIn</a>
+                        <a href="mailto:beatrice1316@gmail.com" class="contact-link">Gmail</a>
+                        <a href="https://www.linkedin.com/in/beatrice-keraite/" class="contact-link">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                Beatričė Keraitė © 2025 metai
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        //title split animation
+        gsap.registerPlugin(ScrollTrigger);
+
+            gsap.to(".line", {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power4.out",
+            stagger: 0.1,
+            scrollTrigger: {
+                trigger: ".project-title",
+                start: "top 80%",
+            }
+        });
+
+        //title rotation on hover
+        const lines = document.querySelectorAll(".project-title .line");
+
+        document.querySelector(".project-title").addEventListener("mouseenter", () => {
+            lines.forEach(line => {
+            gsap.to(line, {
+                duration: 1.2,
+                ease: "power2.out",
+                fontVariationSettings: '"XROT" -20, "YROT" 0'
+            });
+            });
+        });
+
+        document.querySelector(".project-title").addEventListener("mouseleave", () => {
+            lines.forEach(line => {
+            gsap.to(line, {
+                duration: 1.2,
+                ease: "power2.inOut",
+                fontVariationSettings: '"XROT" 0, "YROT" 0'
+            });
+            });
+        });
+
+        //description slide down entrance
+        const title = document.getElementById("project-title");
+        const description = document.getElementById("project-description");
+
+        gsap.set(description, { height: 0, opacity: 0, overflow: "hidden" });
+
+        let isOpen = false;
+
+        title.addEventListener("click", () => {
+            if (!isOpen) {
+                gsap.to(description, {
+                    height: "auto",
+                    opacity: 1,
+                    duration: 0.8,
+                    ease: "power2.out",
+                    onStart: () => {
+                        description.style.overflow = "hidden";
+                    },
+                    onComplete: () => {
+                        description.style.overflow = "visible";
+                    }
+                });
+            } else {
+                gsap.to(description, {
+                    height: 0,
+                    opacity: 0,
+                    duration: 0.6,
+                    ease: "power2.in",
+                    onComplete: () => {
+                        description.style.overflow = "hidden";
+                    }
+                });
+            }
+            isOpen = !isOpen;
+        });
+
+        //section header wipe animation
+        document.querySelectorAll(".section-header").forEach(title => {
+            ScrollTrigger.create({
+                trigger: ".three-collums",
+                start: "top 70%",
+                onEnter: () => {
+                    title.classList.add("wipe-color");
+                },
+                once: true,
+                stagger: 0.2,
+            });
+        });
+
+        //section fade in entrance
+        gsap.from(".description", {
+            scrollTrigger: {
+                trigger: ".three-collums",
+                start: "top 70%",
+            },
+            y: 100,
+            opacity: 0,
+            duration: 1.5,
+            stagger: 0.3,
+            ease: "power3.out"
+        });
+
+        //figma embed slide out
+        document.querySelector('.three-collums').addEventListener('click', () => {
+            gsap.to('.figma-iframe', {
+                y: 50,
+                opacity: 1,
+                duration: 1,
+                ease: 'power2.out'
+            });
+        });
+
+    </script>
+
+</body>
+</html>
