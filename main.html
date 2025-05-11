@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio || Beatričė Keraitė</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="Favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="Favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="Favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.6/lottie.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Recursive:slnt,wght,CASL,CRSV,MONO@-15..0,300..1000,0..1,0,0..1&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Tilt+Warp:XROT,YROT@-45..45,-45..45&display=swap');
+
+        :root {
+            --black: #0F0F0F;
+            --green: #9EBE00;
+        }
+
+        body {
+            background-color: var(--black);
+            font-family: 'Recursive', sans-serif;
+            font-variation-settings: "wght" 400, "slnt" 0, "CASL" 0, "MONO" 0;
+            line-height: 1.5;
+            color: white;
+        }
+
+        .title-section, .about-section, .exp-section, .skills-section, .contact-section {
+            margin-bottom: 120px;
+        }
+
+        .projects-section {
+            margin-bottom: 200px;
+        }
+
+        .navbar-logo {
+            font-family: "Tilt Warp", sans-serif;
+            font-variation-settings: "XROT" 0, "YROT" 0;
+            font-size: 2rem;
+            text-decoration: none;
+            color: white;
+        }
+
+        .nav-link {
+            font-size: 1.5rem;
+            color: white !important;
+        }
+
+        .name-container {
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-end;
+            margin: 200px 0 60px 0;
+        }
+
+        .profile-img-container {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+        }
+
+        .main-title {
+            font-size: 6rem;
+            font-family: "Tilt Warp", sans-serif;
+            font-variation-settings: "XROT" 0, "YROT" 0;
+            line-height: 1.1;
+            color: var(--green);
+            margin-left: 20px;
+        }
+
+        .main-title span {
+            display: inline-block;
+            transition: color 0.3s ease;
+            transform-origin: center;
+            position: relative;
+        }
+
+        .main-title span:hover {
+            color: white;
+            cursor: pointer;
+        }
+
+        .wavy-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .wavy-container svg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-block {
+            width: 95%;
+        }
+
+        .exp-block {
+            color: var(--black);
+            margin-bottom: 40px;
+        }
+
+        .exp-block h3 {
+            font-size: 2rem;
+            font-variation-settings: "wght" 700;
+        }
+
+        .exp-section h3 {
+            color: var(--black);
+        }
+
+        .exp-list li {
+            margin-bottom: 10px;
+        }
+
+        .exp-top {
+            background-color: var(--green);
+            min-height: 200px;
+            padding: 40px 40px 10px 40px;
+        }
+
+        .exp-top:hover h3{
+            font-variation-settings: "slnt" -15, "wght" 800;
+        }
+
+        .exp-top:hover p{
+            font-variation-settings: "slnt" -15, "wght" 500;
+        }
+
+        .exp-bottom {
+            opacity: 0;
+            background-color: var(--green);
+            padding: 40px;
+        }
+
+        .star-row {
+            display: flex;
+            flex-direction: inline block;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .star-big {
+            max-width: 200px;
+            max-height: 200px;
+            margin: 20px;
+        }
+
+        .star-medium {
+            max-width: 100px;
+            max-height: 100px;
+            margin: 20px;
+        }
+
+        .star-small {
+            max-width: 50px;
+            max-height: 50px;
+            margin: 20px;
+        }
+
+        .skills-header {
+            font-size: 4rem;
+            font-variation-settings: "wght" 700;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .skills-section .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 30px;
+        }
+
+        .skill-card {
+            border: 2px solid white;
+            text-align: center;
+            aspect-ratio: 1/1;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px;
+            overflow: hidden;
+        }
+
+        .animated-skill {
+            opacity: 1;
+            font-variation-settings: "wght" 400;
+            transition: opacity 0.5s ease, font-variation-settings 0.5s ease;
+        }
+
+        .skill-card h4 {
+            font-size: 2rem;
+            font-variation-settings: "wght" 600;
+            margin: 0;
+        }
+
+        .fade-in {
+            opacity: 1;
+            transition: opacity 0.5s ease-in;
+        }
+
+        .fade-out {
+            opacity: 0;
+            transition: opacity 0.5s ease-out;
+        }
+
+        .projects-header {
+            font-size: 4rem;
+            font-variation-settings: "wght" 700;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .project-line {
+            /* border-top: 2px solid white; */
+            color: var(--green);
+            display: flex;
+            align-items: center;
+            height: 100px;
+            margin-bottom: 20px;
+            padding: 0 0 0 30px;
+            position: relative;
+            color: var(--green);
+            overflow: hidden;
+            border-top: none !important;
+            background-color: var(--black);
+        }
+
+        .project-line::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            z-index: 0;
+            transition: left 0.5s ease;
+        }
+
+        .project-line:hover::before {
+            left: 0;
+        }
+
+        .project-line > * {
+            position: relative;
+            z-index: 1;
+            transition: color 0.3s ease;
+        }
+
+        .project-line:hover .project-number,
+        .project-line:hover .project-name,
+        .project-line:hover .project-arrow {
+            color: black;
+        }
+
+        .projects-section a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .animated-border {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: white;
+            transform: scaleX(0);
+            transform-origin: left;
+        }
+
+        .project-line .arrow {
+            position: absolute;
+            top: 10px;
+            right: 0px;
+            width: 20%;
+            height: 20%;
+        }
+
+        .project-number {
+            font-size: 4rem;
+            font-variation-settings: "wght" 300;
+            margin: 0 30px 0 0;
+            color: white;
+        }
+
+        .project-line:hover .project-number {
+            font-variation-settings: "wght" 400;
+        }
+
+        .project-name {
+            font-size: 3rem;
+            margin: 0;
+        }
+
+        .project-line:hover .project-name {
+            font-variation-settings: "slnt" -15, "MONO" 1;
+        }
+
+        .project-arrow {
+            font-size: 4rem;
+            font-variation-settings: "wght" 300;
+            margin: 0;
+            text-align: end;
+        }
+
+        .project-number, .project-name, .project-arrow {
+            position: relative;
+            display: inline-block;
+        }
+
+        .marquee {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .marquee-inner {
+            display: flex;
+            width: max-content;
+            animation: marquee-line 10s linear infinite;
+        }
+
+        @keyframes marquee-line {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .marquee:hover .marquee-inner {
+            animation-play-state: paused;
+        }
+
+        .contact-link {
+            font-size: 2rem;
+            font-variation-settings: "slnt" -15;
+            text-decoration: none;
+            text-shadow: none;
+            color: white;
+            border: solid 2px ;
+            border-color: white;
+            padding: 5px 10px 5px 10px;
+            margin-right: 40px;
+            margin-bottom: 10px;
+        }
+
+        .contact-link:hover {
+            box-shadow: white 6px 6px;
+            font-variation-settings: "slnt" 0;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+    
+        
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-logo" href="#">BK</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#apie-mane">Apie mane</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projektai">Projektai</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="title-section">
+        <div class="container">
+            <div class="name-container">
+                <div class="col-md-8 profile-img-container">
+                    <img src="Images/portrait.png" alt="Beatričės Keraitės portretas" class="profile-img">
+                </div>
+                <div class=" col-md-4 main-title" id="main-title">
+                    <!-- Beatričė<br>Keraitė -->
+                </div>
+            </div>
+            
+            <div class="wavy-container" id="lottie-animation" >
+            </div>
+        </div>
+    </header>
+
+    <section class="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="about-block">
+                        <p>
+                            Esu Vilnius Tech Multimedijos ir kompiuterinio dizaino bakalauro ketvirto kurso studentė, besidominti vartotojo sąsajų ir patirties (UI/UX) dizainu. Mano stiprybės slypi grafinio ir interaktyvaus dizaino srityse – nuo idėjų generavimo iki maketavimo bei prototipų kūrimo.                        
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="about-block">
+                        <p>
+                            Taip pat turiu pagrindines programavimo žinias (HTML/CSS, JavaScript). Studijuodama išmokau dirbti su įvairiomis dizaino programomis, tokiomis kaip Figma, Adobe Illustrator, InDesign ir Photoshop.                         
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="about-block">
+                        <p>
+                            Iš ankstesnės darbo patirties įgijau projektų planavimo, bendravimo su klientais bei tikslo siekimo įgūdžių. Esu atsakinga, kruopšti ir kūrybinga, greitai prisitaikanti prie naujų užduočių ir orientuota į nuolatinį tobulėjimą.                        
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="exp-section" id="apie-mane">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="exp-block">
+                        <div class="exp-top">
+                            <h3>Multimedija ir kompiuterinis dizainas</h3>
+                            <p>2021 m. rugsėjis – 2025 m. birželis (Vilnius Tech)</p>
+                        </div>
+                        <div class="exp-bottom">
+                            <ul class="exp-list">
+                                <li>Studijų metu įgijau teorinių ir praktinių žinių grafinio dizaino, programavimo, vartotojo sąsajų (UI) ir patirties (UX) kūrimo, multimedijos turinio gamybos bei internetinių technologijų srityse.</li>
+                                <li>Mokiausi taikyti vizualinės komunikacijos principus, kurti interaktyvius skaitmeninius produktus, derinant kūrybiškumą su techninėmis žiniomis.</li>
+                                <li>Dirbau su įvairiomis dizaino ir kūrimo priemonėmis, tokiomis kaip Figma, Adobe Creative Suite, Blender bei daugybe programavimo kalbų.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="exp-block">
+                        <div class="exp-top">
+                            <h3>E. mokymų kūrėja</h3>
+                            <p>2024 m. rugsėjis – dabar (E. mokymų sprendimai)</p>
+                        </div>
+                        <div class="exp-bottom">
+                            <ul class="exp-list">
+                                <li>Prisidedu prie įvairių e. mokymų kūrimo sprendimų, apimančių tiek vizualinį apipavidalinimą, tiek interaktyvių elementų kūrimą.</li>
+                                <li>Kuriu skaitmeninius mokymus, naudodama programas Articulate Storyline, Rise, Canva ir Camtasia.</li>
+                                <li>Bendrauju su turinio ekspertais ir užsakovais siekiant sukurti kuo kokybiškesnę e. mokymų patirtį.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="row">
+                <div class="star-row">
+                    <img src="Images/Star-big.svg" alt="Star icon" class="star-big">
+                    <img src="Images/Star-medium.svg" alt="Star icon" class="star-medium">
+                    <img src="Images/Star-small.svg" alt="Star icon" class="star-small">
+                    <img src="Images/Star-small.svg" alt="Star icon" class="star-small">
+                    <img src="Images/Star-medium.svg" alt="Star icon" class="star-medium">
+                    <img src="Images/Star-big.svg" alt="Star icon" class="star-big">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="skills-section">
+        <div class="container">
+            <h2 class="skills-header">Mano įgūdžiai</h2>
+            <div class="col-md-6">
+                <div class="skills-grid">
+                    <div class="skill-card" id="s-left-top">
+                        <h4 class="animated-skill">Figma</h4>
+                    </div>
+                    <div class="skill-card" id="s-right-top">
+                        <h4 class="animated-skill">Articulate Storyline</h4>
+                    </div>
+                    <div class="skill-card" id="s-left-bottom">
+                        <h4 class="animated-skill">Adobe After Effects</h4>
+                    </div>
+                    <div class="skill-card" id="s-right-bottom">
+                        <h4 class="animated-skill">HTML/CSS</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects-section" id="projektai">
+        <div class="container">
+            <h2 class="projects-header">Mano projektai</h2>
+            
+            <a href="app-project.html">
+                <div class="project-line">
+                    <h2 class="project-number">01</h2>
+                    <h3 class="project-name">Programėlės UI/UX dizainas</h3>
+                    <h3 class="project-arrow">  »</h3>
+                </div>
+            </a>
+            
+            <a href="website_project.html">
+                <div class="project-line">
+                    <h2 class="project-number">02</h2>
+                    <h3 class="project-name">Svetainės dizaino kūrimas</h3>
+                    <h3 class="project-arrow">  »</h3>
+                </div>
+            </a>
+            
+            <a href="redesign-project.html">
+                <div class="project-line">
+                    <h2 class="project-number">03</h2>
+                    <h3 class="project-name">Svetainės dizaino perdarymas</h3>
+                    <h3 class="project-arrow">  »</h3>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="contact-section">
+                <div class="marquee">
+                    <div class="marquee-inner">
+                        <a href="mailto:beatrice1316@gmail.com" class="contact-link">Gmail</a>
+                        <a href="https://www.linkedin.com/in/beatrice-keraite/" class="contact-link">LinkedIn</a>
+                        <a href="mailto:beatrice1316@gmail.com" class="contact-link">Gmail</a>
+                        <a href="https://www.linkedin.com/in/beatrice-keraite/" class="contact-link">LinkedIn</a>
+                        <a href="mailto:beatrice1316@gmail.com" class="contact-link">Gmail</a>
+                        <a href="https://www.linkedin.com/in/beatrice-keraite/" class="contact-link">LinkedIn</a>
+                        <a href="mailto:beatrice1316@gmail.com" class="contact-link">Gmail</a>
+                        <a href="https://www.linkedin.com/in/beatrice-keraite/" class="contact-link">LinkedIn</a>
+                        <a href="mailto:beatrice1316@gmail.com" class="contact-link">Gmail</a>
+                        <a href="https://www.linkedin.com/in/beatrice-keraite/" class="contact-link">LinkedIn</a>
+                        <a href="mailto:beatrice1316@gmail.com" class="contact-link">Gmail</a>
+                        <a href="https://www.linkedin.com/in/beatrice-keraite/" class="contact-link">LinkedIn</a>
+                        <a href="mailto:beatrice1316@gmail.com" class="contact-link">Gmail</a>
+                        <a href="https://www.linkedin.com/in/beatrice-keraite/" class="contact-link">LinkedIn</a>
+                        <a href="mailto:beatrice1316@gmail.com" class="contact-link">Gmail</a>
+                        <a href="https://www.linkedin.com/in/beatrice-keraite/" class="contact-link">LinkedIn</a>
+                        <a href="mailto:beatrice1316@gmail.com" class="contact-link">Gmail</a>
+                        <a href="https://www.linkedin.com/in/beatrice-keraite/" class="contact-link">LinkedIn</a>
+                        <a href="mailto:beatrice1316@gmail.com" class="contact-link">Gmail</a>
+                        <a href="https://www.linkedin.com/in/beatrice-keraite/" class="contact-link">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                Beatričė Keraitė © 2025 metai
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"> </script>
+
+    <script>
+
+        //profile picture animation
+        gsap.from(".profile-img", {
+            rotation: -360,
+            opacity: 0,
+            ease: "power1.out",
+            duration: 1.2,
+            stagger: 0.1,
+            delay: 0.3
+        });
+
+        //main title letters bounce animation
+        //seperate text line into span
+        const titleText = "Beatričė\nKeraitė";
+        const container = document.getElementById("main-title");
+        container.innerHTML = "";
+
+        titleText.split("").forEach((char, i) => {
+            const span = document.createElement("span");
+            span.textContent = char === "\n" ? "\n" : char;
+            if (char === "\n") {
+                container.appendChild(document.createElement("br"));
+            } else {
+                span.style.display = "inline-block";
+                container.appendChild(span);
+
+                //color change on hover
+                span.addEventListener('mouseover', () => {
+                    span.style.color = "white";
+                });
+                span.addEventListener('mouseout', () => {
+                    span.style.color = "var(--green)";
+                });
+
+                //rotation on click
+                span.addEventListener('click', () => {
+                    const randomRotationX = gsap.utils.random(-45, 45);
+                    const randomRotationY = gsap.utils.random(-45, 45);
+                    
+                    gsap.to(span, {
+                        fontVariationSettings: `"XROT" ${randomRotationX}, "YROT" ${randomRotationY}`,
+                        duration: 1,
+                        ease: "power2.out",
+                        onComplete: () => {
+                            gsap.to(span, {
+                                fontVariationSettings: `"XROT" 0, "YROT" 0`,
+                                duration: 1,
+                                ease: "power2.in"
+                            });
+                        }
+                    });
+                });
+            }
+        });
+
+        //title leters bounce animation
+        gsap.from("#main-title span", {
+            y: 100,
+            opacity: 0,
+            ease: "bounce.out",
+            duration: 0.8,
+            stagger: 0.1,
+            delay: 0.5
+        });
+
+        //wiggly line animation
+        // Lottie animacija
+        var animation = lottie.loadAnimation({
+            container: document.getElementById('lottie-animation'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: 'Animation/wiggly-line.json'
+        });
+
+        //about block entrance animation
+        gsap.utils.toArray('.about-block').forEach((block, i) => {
+                gsap.fromTo(block, 
+                {
+                    opacity: 0,
+                    y: 50
+                },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1.2,
+                    stagger: 0.1,
+                    delay: i * 0.3,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: '.about-section',
+                        start: 'top 70%',
+
+                    }
+                }
+            );
+        });
+
+        //experience card wipe animation
+        document.addEventListener("DOMContentLoaded", function() {
+        const expBottoms = document.querySelectorAll('.exp-bottom');
+        expBottoms.forEach(bottom => {
+            bottom.style.maxHeight = '0px';
+            bottom.style.transition = 'max-height 0.5s ease-in-out, opacity 0.5s ease-in-out';
+            bottom.style.overflow = 'hidden';
+        });
+
+        const expTops = document.querySelectorAll('.exp-top');
+        expTops.forEach(top => {
+            top.addEventListener('click', function() {
+            const bottom = this.nextElementSibling;
+            
+            if (bottom.style.maxHeight === '0px') {
+                bottom.style.maxHeight = bottom.scrollHeight + 'px';
+                bottom.style.opacity = '1';
+            } else {
+                bottom.style.maxHeight = '0px';
+                bottom.style.opacity = '0';
+            }
+            });
+            
+            top.style.cursor = 'pointer';
+        });
+        });
+
+        //skills header fade in
+        gsap.from(".skills-header", {
+            scrollTrigger: {
+                trigger: ".skills-section",
+                start: "top 70%",
+            },
+            y: -100,
+            opacity: 0,
+            duration: 1.5,
+            stagger: 0.2,
+            ease: "power3.out"
+        });
+
+        //skill cards rotation entrance
+        gsap.from("#s-left-top",  {
+            scrollTrigger: {
+                trigger: ".skills-section",
+                start: "top 60%",
+            },
+            x: -400,
+            rotation: 360,
+            duration: 1,
+            stagger: 0.2,
+            ease: "steps(4)"
+        });
+
+        gsap.from("#s-left-bottom",  {
+            scrollTrigger: {
+                trigger: ".skills-section",
+                start: "top 60%",
+            },
+            x: -400,
+            rotation: -360,
+            duration: 1,
+            delay: 0.3,
+            stagger: 0.2,
+            ease: "steps(4)"
+        });
+
+        gsap.from("#s-right-top",  {
+            scrollTrigger: {
+                trigger: ".skills-section",
+                start: "top 60%",
+            },
+            x: 400,
+            rotation: -360,
+            duration: 1,
+            delay: 0.2,
+            stagger: 0.2,
+            ease: "steps(4)"
+        });
+
+        gsap.from("#s-right-bottom",  {
+            scrollTrigger: {
+                trigger: ".skills-section",
+                start: "top 60%",
+            },
+            x: 400,
+            rotation: 360,
+            duration: 1,
+            delay: 0.4,
+            stagger: 0.2,
+            ease: "steps(4)"
+        });
+
+        //skill cards title cycle animation
+        const skills = [
+            ["Figma", "Canva"],
+            ["Articulate Storyline", "Articulate Rise", "Camtasia"],
+            ["Adobe After Effects", "Adobe Illustrator", "Adobe Photoshop"],
+            ["HTML/CSS", "JavaScript"]
+        ];
+    
+        const skillElements = document.querySelectorAll(".animated-skill");
+        const interval = 1500;
+        const fadeDuration = 500;
+    
+        let skillIndices = new Array(skillElements.length).fill(0);
+    
+        function updateSkill(cardIndex) {
+            const el = skillElements[cardIndex];
+            el.classList.remove("fade-in");
+            el.classList.add("fade-out");
+    
+            setTimeout(() => {
+                // Update text
+                skillIndices[cardIndex] = (skillIndices[cardIndex] + 1) % skills[cardIndex].length;
+                el.textContent = skills[cardIndex][skillIndices[cardIndex]];
+    
+                el.classList.remove("fade-out");
+                el.classList.add("fade-in");
+            }, fadeDuration);
+        }
+    
+        skillElements.forEach((_, i) => {
+            setTimeout(() => {
+                setInterval(() => updateSkill(i), interval * skillElements.length);
+            }, i * interval);
+        });
+
+        //projects header fade in
+        gsap.from(".projects-header", {
+            scrollTrigger: {
+                trigger: ".projects-section",
+                start: "top 70%",
+            },
+            y: -100,
+            opacity: 0,
+            duration: 1.5,
+            stagger: 0.2,
+            ease: "power3.out"
+        });
+
+        //project line elements entrance animation
+        document.addEventListener("DOMContentLoaded", function() {
+        document.querySelectorAll('.project-line').forEach(line => {
+
+            const border = document.createElement('div');
+            border.className = 'animated-border';
+            line.prepend(border);
+            
+            gsap.set(line.querySelector('.project-number'), { opacity: 0 });
+            gsap.set(line.querySelector('.project-name'), { opacity: 0, x: -30 });
+            gsap.set(line.querySelector('.project-arrow'), { opacity: 0, x: -30 });
+        });
+        
+        document.querySelectorAll('.project-line').forEach((line, index) => {
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: line,
+                    start: "top 70%",
+                    toggleActions: "play none none none"
+                }
+            });
+            
+            //project fade in animation
+            tl.to(line.querySelector('.project-number'), {
+                opacity: 1,
+                duration: 0.5,
+                ease: "power2.out"
+            }, 0);
+            
+            //border wipe
+            tl.to(line.querySelector('.animated-border'), {
+                scaleX: 1,
+                duration: 0.6,
+                ease: "power2.inOut"
+            }, 0);
+            
+            //project name entrance animation
+            tl.to(line.querySelector('.project-name'), {
+                opacity: 1,
+                x: 0,
+                duration: 0.5,
+                ease: "power2.out"
+            }, 0.3);
+            
+            //arrow entrance animation
+            tl.to(line.querySelector('.project-arrow'), {
+                opacity: 1,
+                x: 0,
+                duration: 0.5,
+                ease: "power2.out"
+            }, 0.4);
+        });
+    });
+
+    </script>
+
+</body>
+</html>
