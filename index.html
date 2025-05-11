@@ -93,8 +93,13 @@
         }
 
         .wavy-container {
-            position: absolute;
+            position: relative;
+            width: 100%;
+            height: 200px;
             overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .wavy-container svg {
@@ -416,7 +421,7 @@
     </header>
 
     <section class="wavy-section">
-        <div class="col-md-11">
+        <div class="col-md-12">
             <div class="wavy-container" id="lottie-animation"></div>
         </div>
     </section>
@@ -653,8 +658,7 @@
         });
 
         //wiggly line animation
-        // Lottie animacija
-        var animation = lottie.loadAnimation({
+        lottie.loadAnimation({
             container: document.getElementById('lottie-animation'),
             renderer: 'svg',
             loop: true,
