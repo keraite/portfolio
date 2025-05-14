@@ -56,13 +56,13 @@
         .name-container {
             display: flex;
             align-items: flex-start;
-            justify-content: flex-end;
+            justify-content: flex-start;
             margin: 200px 0 60px 0;
         }
 
         .profile-img-container {
             display: flex;
-            justify-content: flex-end;
+            justify-content: flex-start;
         }
 
         .profile-img {
@@ -114,7 +114,12 @@
 
         .exp-block {
             color: var(--black);
-            margin-bottom: 40px;
+        }
+
+        .exp-block h2 {
+            font-size: 3rem;
+            font-variation-settings: "wght" 700;
+            color: var(--green);
         }
 
         .exp-block h3 {
@@ -136,7 +141,12 @@
             padding: 40px 40px 10px 40px;
         }
 
+        .exp-top:hover {
+            cursor: pointer;
+        }
+
         .exp-top:hover h3{
+            cursor: pointer;
             font-variation-settings: "slnt" -15, "wght" 800;
         }
 
@@ -148,38 +158,21 @@
             opacity: 0;
             background-color: var(--green);
             padding: 40px;
+            height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
         }
 
-        .star-row {
-            display: flex;
-            flex-direction: inline block;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-        }
-
-        .star-big {
-            max-width: 200px;
-            max-height: 200px;
-            margin: 20px;
-        }
-
-        .star-medium {
-            max-width: 100px;
-            max-height: 100px;
-            margin: 20px;
-        }
-
-        .star-small {
-            max-width: 50px;
-            max-height: 50px;
-            margin: 20px;
+        .exp-bottom.active {
+            opacity: 1;
+            min-height: 360px;
+            height: auto;
         }
 
         .skills-header {
             font-size: 4rem;
             font-variation-settings: "wght" 700;
-            margin-bottom: 30px;
+            margin-bottom: 10px;
             text-align: center;
         }
 
@@ -382,6 +375,113 @@
             text-align: center;
             margin-bottom: 10px;
         }
+
+        /* mobile styles */
+        @media (max-width: 800px) {
+            .title-section, .wavy-section, .about-section, .exp-section, .skills-section, .contact-section {
+                margin-bottom: 60px;
+            }
+
+            .navbar-logo {
+                font-size: 1.5rem;
+            }
+            
+            .nav-link {
+                font-size: 1.2rem;
+            }
+            
+            .name-container {
+                margin: 100px 0 30px 0;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .profile-img-container {
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+            
+            .main-title {
+                font-size: 3.5rem;
+                text-align: center;
+                margin-left: 0;
+            }
+            
+            .wavy-container {
+                height: 150px;
+            }
+
+            .exp-block {
+                margin-bottom: 40px;
+            }
+            
+            .exp-block h2 {
+                font-size: 2.2rem;
+            }
+            
+            .exp-block h3 {
+                font-size: 1.5rem;
+            }
+            
+            .exp-top {
+                padding: 25px 25px 10px 25px;
+            }
+            
+            .exp-bottom {
+                padding: 25px;
+            }
+            
+            .exp-bottom.active {
+                min-height: 300px;
+            }
+            
+            .skills-section .container {
+                padding: 0 15px;
+            }
+            
+            .skill-card {
+                padding: 30px;
+            }
+            
+            .skill-card h4 {
+                font-size: 1.2rem;
+            }
+
+            .projects-section {
+                margin-bottom: 80px;
+            }
+            
+            .projects-header, .skills-header {
+                font-size: 2.8rem;
+            }
+            
+            .project-line {
+                height: auto;
+                padding: 15px 15px 15px 15px;
+                flex-wrap: wrap;
+            }
+            
+            .project-number {
+                font-size: 2.2rem;
+                margin-right: 10px;
+            }
+            
+            .project-name {
+                font-size: 1.5rem;
+                flex: 1;
+            }
+            
+            .project-arrow {
+                opacity: 0;
+            }
+            
+            .contact-link {
+                font-size: 1.2rem;
+                margin-right: 15px;
+                margin-bottom: 8px;
+                padding: 4px 8px;
+            }
+        }
     
         
     </style>
@@ -409,11 +509,11 @@
 
     <header class="title-section">
         <div class="container">
-            <div class="name-container">
-                <div class="col-md-8 profile-img-container">
+            <div class="col-md-12 name-container">
+                <div class="profile-img-container">
                     <img src="Images/portrait.png" alt="Beatričės Keraitės portretas" class="profile-img">
                 </div>
-                <div class=" col-md-4 main-title" id="main-title">
+                <div class="main-title" id="main-title">
                     <!-- Beatričė<br>Keraitė -->
                 </div>
             </div>
@@ -459,6 +559,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="exp-block">
+                        <h2>Studijos</h2>
                         <div class="exp-top">
                             <h3>Multimedija ir kompiuterinis dizainas</h3>
                             <p>2021 m. rugsėjis – 2025 m. birželis (Vilnius Tech)</p>
@@ -474,6 +575,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="exp-block">
+                        <h2>Darbo patirtis</h2>
                         <div class="exp-top">
                             <h3>E. mokymų kūrėja</h3>
                             <p>2024 m. rugsėjis – dabar (E. mokymų sprendimai)</p>
@@ -481,22 +583,12 @@
                         <div class="exp-bottom">
                             <ul class="exp-list">
                                 <li>Prisidedu prie įvairių e. mokymų kūrimo sprendimų, apimančių tiek vizualinį apipavidalinimą, tiek interaktyvių elementų kūrimą.</li>
-                                <li>Kuriu skaitmeninius mokymus, naudodama programas Articulate Storyline, Rise, Canva ir Camtasia.</li>
+                                <li>Bendrauju su turinio ekspertais ir užsakovais siekiant sukurti kuo kokybiškesnę e. mokymų patirtį.</li>
+                                <li>Pagal instrukcinio dizaino pricipus pritaikau pateiktą teoriją e. mokymams ir prisidedu prie testinių užduočių kūrimo.</li>
                                 <li>Bendrauju su turinio ekspertais ir užsakovais siekiant sukurti kuo kokybiškesnę e. mokymų patirtį.</li>
                             </ul>
                         </div>
                     </div>
-                </div>
-                
-            </div>
-            <div class="row">
-                <div class="star-row">
-                    <img src="Images/Star-big.svg" alt="Star icon" class="star-big">
-                    <img src="Images/Star-medium.svg" alt="Star icon" class="star-medium">
-                    <img src="Images/Star-small.svg" alt="Star icon" class="star-small">
-                    <img src="Images/Star-small.svg" alt="Star icon" class="star-small">
-                    <img src="Images/Star-medium.svg" alt="Star icon" class="star-medium">
-                    <img src="Images/Star-big.svg" alt="Star icon" class="star-big">
                 </div>
             </div>
         </div>
@@ -690,30 +782,32 @@
         });
 
         //experience card wipe animation
-        document.addEventListener("DOMContentLoaded", function() {
-        const expBottoms = document.querySelectorAll('.exp-bottom');
-        expBottoms.forEach(bottom => {
-            bottom.style.maxHeight = '0px';
-            bottom.style.transition = 'max-height 0.5s ease-in-out, opacity 0.5s ease-in-out';
-            bottom.style.overflow = 'hidden';
-        });
+        document.querySelectorAll(".exp-top").forEach(top => {
+            const bottom = top.nextElementSibling;
 
-        const expTops = document.querySelectorAll('.exp-top');
-        expTops.forEach(top => {
-            top.addEventListener('click', function() {
-            const bottom = this.nextElementSibling;
-            
-            if (bottom.style.maxHeight === '0px') {
-                bottom.style.maxHeight = bottom.scrollHeight + 'px';
-                bottom.style.opacity = '1';
-            } else {
-                bottom.style.maxHeight = '0px';
-                bottom.style.opacity = '0';
-            }
+            top.addEventListener("click", () => {
+                const isVisible = bottom.style.opacity === "1";
+
+                if (isVisible) {
+                    gsap.to(bottom, {
+                        height: 0,
+                        opacity: 0,
+                        duration: 0.5,
+                        ease: "power2.out"
+                    });
+                } else {
+                    gsap.set(bottom, { height: "auto" });
+                    const fullHeight = bottom.offsetHeight;
+                    gsap.set(bottom, { height: 0 });
+
+                    gsap.to(bottom, {
+                        height: Math.max(360, fullHeight),
+                        opacity: 1,
+                        duration: 0.5,
+                        ease: "power2.out"
+                    });
+                }
             });
-            
-            top.style.cursor = 'pointer';
-        });
         });
 
         //skills header fade in
