@@ -457,7 +457,7 @@
             
             .project-line {
                 height: auto;
-                padding: 15px 15px 15px 15px;
+                padding: 15px;
                 flex-wrap: wrap;
             }
             
@@ -467,12 +467,14 @@
             }
             
             .project-name {
-                font-size: 1.5rem;
+                font-size: 1.2rem;
+                font-variation-settings: "wght" 600;
                 flex: 1;
+                padding: 0 20px 0 10px;
             }
             
             .project-arrow {
-                opacity: 0;
+                display: none;
             }
             
             .contact-link {
@@ -829,8 +831,9 @@
                 trigger: ".skills-section",
                 start: "top 60%",
             },
-            x: -400,
+            xPercent: -100,
             rotation: 360,
+            opacity: 0,
             duration: 1,
             stagger: 0.2,
             ease: "steps(4)"
@@ -841,8 +844,9 @@
                 trigger: ".skills-section",
                 start: "top 60%",
             },
-            x: -400,
+            xPercent: -100,
             rotation: -360,
+            opacity: 0,
             duration: 1,
             delay: 0.3,
             stagger: 0.2,
@@ -854,8 +858,9 @@
                 trigger: ".skills-section",
                 start: "top 60%",
             },
-            x: 400,
+            xPercent: 100,
             rotation: -360,
+            opacity: 0,
             duration: 1,
             delay: 0.2,
             stagger: 0.2,
@@ -867,8 +872,9 @@
                 trigger: ".skills-section",
                 start: "top 60%",
             },
-            x: 400,
+            xPercent: 100,
             rotation: 360,
+            opacity: 0,
             duration: 1,
             delay: 0.4,
             stagger: 0.2,
