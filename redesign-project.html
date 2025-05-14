@@ -48,6 +48,10 @@
             padding-top: 50px;
         }
 
+        .row {
+            align-items: flex-start;
+        }
+
         .section-content {
             margin-bottom: 120px;
         }
@@ -58,6 +62,13 @@
             font-variation-settings: "XROT" 0, "YROT" 0;
             margin: 200px 0 100px 0;
             overflow: hidden;
+            animation: rotation-pulse 4s ease infinite;
+            animation-delay: 3s;
+        }
+
+        @keyframes rotation-pulse {
+            0%, 100% { font-variation-settings: "XROT" 0, "YROT" 0; }
+            50% { font-variation-settings: "XROT" 0, "YROT" -45; }
         }
 
         .project-title .line {
@@ -100,7 +111,7 @@
         }
 
         .image-column {
-            margin: 0px 0px 100px 100px;
+            margin: 200px 0px 100px 100px;
             display: flex;
             justify-content: flex-end;
             align-items: end;
@@ -156,11 +167,58 @@
             margin-bottom: 10px;
         }
 
+        /* mobile styles */
+        @media (max-width: 800px) {
+
+            .navbar-logo {
+                font-size: 1.5rem;
+            }
+            
+            .nav-link {
+                font-size: 1rem;
+            }
+
+            .navbar {
+                margin-bottom: 30px;
+            }
+
+            .main-content {
+                padding: 30px;
+            }
+
+            .section-content {
+                margin-bottom: 60px;
+            }
+
+            .project-title {
+                font-size: 3rem;
+                margin: 60px 0 50px 0;
+                text-align: center;
+            }
+            
+            .section-header {
+                font-size: 1.5rem;
+                margin-bottom: 15px;
+            }
+            
+            .image-column {
+                margin: 50px 0 40px 0;
+            }
+            
+            .contact-link {
+                font-size: 1.2rem;
+                margin-right: 15px;
+                margin-bottom: 70px;
+                padding: 4px 8px;
+            }
+
+        }
+
     </style>
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark pt-3">
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-logo" href="index.html">BK</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -181,7 +239,7 @@
 
     <div class="container main-content">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-md-6">
                 <div class="section-content">
                     <h1 class="project-title" id="project-title">
                         <span class="line">Svetainės</span>
@@ -210,7 +268,7 @@
                 </div>
             </div>
             
-            <div class="col-lg-5 image-column">
+            <div class="col-md-5 image-column">
                 <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
