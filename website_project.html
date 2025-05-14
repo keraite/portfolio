@@ -44,7 +44,7 @@
             color: white !important;
         }
 
-        .title-row, .three-collums, .figma {
+        .title-row, .three-columns, .figma {
             margin-bottom: 120px;
         }
 
@@ -53,6 +53,13 @@
             font-family: "Tilt Warp", sans-serif;
             font-variation-settings: "XROT" 0, "YROT" 0;
             overflow: hidden;
+            animation: rotation-pulse 4s ease infinite;
+            animation-delay: 3s;
+        }
+
+        @keyframes rotation-pulse {
+            0%, 100% { font-variation-settings: "XROT" 0, "YROT" 0; }
+            50% { font-variation-settings: "XROT" -20, "YROT" 0; }
         }
 
         .project-title .line {
@@ -100,18 +107,24 @@
             100% { background-position: left; }
         }
 
-        .three-collums {
-            padding: 40px 0 0 10px;
+        .three-columns {
+            padding: 40px 0px 40px 30px;
         }
 
-        .three-collums:hover {
+        .three-columns:hover {
             border: solid 2px white;
             box-shadow: white 6px 6px 0;
             font-variation-settings: "slnt" -15;
             cursor: pointer;
         }
 
-        .three-collums:hover .section-header {
+        .three-columns.active {
+            border: solid 2px white;
+            box-shadow: white 6px 6px 0;
+            cursor: pointer;
+        }
+
+        .three-columns:hover .section-header {
             font-variation-settings: "slnt" -15;
         }
 
@@ -170,6 +183,81 @@
             margin-bottom: 10px;
         }
 
+        /* mobile styles */
+        @media (max-width: 800px) {
+            
+            .container {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+            
+            .title-row, .three-columns, .figma {
+                margin-bottom: 60px;
+            }
+
+            .navbar-logo {
+                font-size: 1.5rem;
+            }
+            
+            .nav-link {
+                font-size: 1.1rem;
+            }
+
+            .navbar {
+                margin-bottom: 30px;
+            }
+
+            .title-row {
+                display: block;
+                margin: 80px 0 60px 0;
+            }
+
+            #project-description {
+                padding: 0 20px 0 20px;
+            }
+            
+            .project-title {
+                font-size: 3rem;
+                text-align: center;
+                margin: 100px 0 50px 0;
+            }
+
+            @keyframes rotation-pulse {
+                0%, 100% { font-variation-settings: "XROT" 0, "YROT" 0; }
+                50% { font-variation-settings: "XROT" 0, "YROT" -45; }
+            }
+
+            .section-header {
+                font-size: 1.5rem;
+                margin-bottom: 15px;
+            }
+
+            .description {
+                margin-bottom: 70px;
+            }
+
+            .three-columns {
+                padding: 20px 15px;
+            }
+
+            .figma {
+                margin: 0px 0 20px 0;
+                height: 300px;
+            }
+
+            .contact-section {
+                margin: 120px 0 40px 0;
+            }
+
+            .contact-link {
+                font-size: 1.2rem;
+                margin-right: 15px;
+                margin-bottom: 40px;
+                padding: 4px 8px;
+            }
+            
+        }
+
     </style>
 </head>
 <body>
@@ -208,7 +296,7 @@
             </div>
         </section>
 
-        <section class="row three-collums">
+        <section class="row three-columns">
             <div class="col-md-4">
                 <h2 class="section-header">Projekto tiriamoji dalis</h2>
                 <p class="description">
@@ -289,26 +377,40 @@
             }
         });
 
-        //title rotation on hover
-        const lines = document.querySelectorAll(".project-title .line");
 
-        document.querySelector(".project-title").addEventListener("mouseenter", () => {
+        // title rotation on hover with responsive design
+        function isMobileScreen() {
+            return window.innerWidth <= 800;
+        }
+
+        const lines = document.querySelectorAll(".project-title .line");
+        const projectTitle = document.querySelector(".project-title");
+
+        projectTitle.addEventListener("mouseenter", () => {
             lines.forEach(line => {
-            gsap.to(line, {
-                duration: 1.2,
-                ease: "power2.out",
-                fontVariationSettings: '"XROT" -20, "YROT" 0'
-            });
+                if (isMobileScreen()) {
+                    gsap.to(line, {
+                        duration: 1.2,
+                        ease: "power2.out",
+                        fontVariationSettings: '"XROT" 0, "YROT" -45'
+                    });
+                } else {
+                    gsap.to(line, {
+                        duration: 1.2,
+                        ease: "power2.out",
+                        fontVariationSettings: '"XROT" -20, "YROT" 0'
+                    });
+                }
             });
         });
 
-        document.querySelector(".project-title").addEventListener("mouseleave", () => {
+        projectTitle.addEventListener("mouseleave", () => {
             lines.forEach(line => {
-            gsap.to(line, {
-                duration: 1.2,
-                ease: "power2.inOut",
-                fontVariationSettings: '"XROT" 0, "YROT" 0'
-            });
+                gsap.to(line, {
+                    duration: 1.2,
+                    ease: "power2.inOut",
+                    fontVariationSettings: '"XROT" 0, "YROT" 0'
+                });
             });
         });
 
@@ -351,7 +453,7 @@
         //section header wipe animation
         document.querySelectorAll(".section-header").forEach(title => {
             ScrollTrigger.create({
-                trigger: ".three-collums",
+                trigger: ".three-columns",
                 start: "top 70%",
                 onEnter: () => {
                     title.classList.add("wipe-color");
@@ -364,7 +466,7 @@
         //section fade in entrance
         gsap.from(".description", {
             scrollTrigger: {
-                trigger: ".three-collums",
+                trigger: ".three-columns",
                 start: "top 70%",
             },
             y: 100,
@@ -374,8 +476,12 @@
             ease: "power3.out"
         });
 
-        //figma embed slide out
-        document.querySelector('.three-collums').addEventListener('click', () => {
+        //figma embed slide out  and border
+        const textColumn = document.querySelector('.three-columns');
+
+        textColumn.addEventListener('click', () => {
+            textColumn.classList.add('active');
+            
             gsap.to('.figma-iframe', {
                 y: 50,
                 opacity: 1,
